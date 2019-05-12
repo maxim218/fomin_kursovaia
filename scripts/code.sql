@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS house;
+DROP TABLE IF EXISTS city;
+DROP TABLE IF EXISTS country;
+
+CREATE TABLE country (
+    country_id SERIAL PRIMARY KEY,
+    country_name TEXT
+);
+
+CREATE TABLE city (
+    city_id SERIAL PRIMARY KEY,
+    city_name TEXT,
+    city_country_id INTEGER REFERENCES country(country_id) ON DELETE CASCADE NOT NULL
+);
+
+CREATE TABLE house (
+    house_id SERIAL PRIMARY KEY,
+    house_name TEXT,
+    house_city_id INTEGER REFERENCES city(city_id) ON DELETE CASCADE NOT NULL
+);
+
+CREATE TABLE department (
+    department_id SERIAL PRIMARY KEY,
+    department_name TEXT,
+    department_house_id INTEGER REFERENCES house(house_id) ON DELETE CASCADE NOT NULL
+);
+

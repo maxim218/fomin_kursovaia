@@ -1,0 +1,17 @@
+{
+  "name": "document-control",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./scripts/index.js"
+  },
+  "keywords": [],
+  "author": "Kolotovkin Maxim",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "pg": "^6.1.0"
+  }
+}

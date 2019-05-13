@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS department;
 DROP TABLE IF EXISTS house;
 DROP TABLE IF EXISTS city;
@@ -24,5 +25,11 @@ CREATE TABLE department (
     department_id SERIAL PRIMARY KEY,
     department_name TEXT,
     department_house_id INTEGER REFERENCES house(house_id) ON DELETE CASCADE NOT NULL
+);
+
+CREATE TABLE people (
+    people_id SERIAL PRIMARY KEY,
+    people_fio TEXT,
+    people_department_id INTEGER REFERENCES department(department_id) ON DELETE CASCADE NOT NULL
 );
 

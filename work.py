@@ -112,6 +112,18 @@ for i in range(8000, 9000 + 1):
 nl()
 nl()
 time.sleep(3)
+
+# add people to departments
+
+departmentsNumber = 17325
+
+for i in range(1, departmentsNumber + 1):
+	for k in range(1, 2 + (i % 4) + 1):
+		sendGet('api/database/people/insert?people_fio=people_' + str(k) + '_depart_' + str(i) + "&people_department_id=" + str(i))
+
+nl()
+nl()
+time.sleep(3)
 		
 # exit
 

@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS department;
 DROP TABLE IF EXISTS house;
 DROP TABLE IF EXISTS city;
 DROP TABLE IF EXISTS country;
+DROP TABLE IF EXISTS tip;
 
 CREATE TABLE country (
     country_id SERIAL PRIMARY KEY,
@@ -31,5 +32,10 @@ CREATE TABLE people (
     people_id SERIAL PRIMARY KEY,
     people_fio TEXT,
     people_department_id INTEGER REFERENCES department(department_id) ON DELETE CASCADE NOT NULL
+);
+
+CREATE TABLE tip (
+    tip_id SERIAL PRIMARY KEY,
+    tip_name TEXT
 );
 

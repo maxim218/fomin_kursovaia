@@ -34,6 +34,17 @@ nl()
 nl()
 time.sleep(3)
 
+# add tips
+
+tipNumber = 15
+
+for i in range(1, tipNumber + 1):
+	sendGet('api/database/tip/insert?tip_name=tip_type_' + str(i))
+
+nl()
+nl()
+time.sleep(3)
+
 # add countries
 
 countyMaxNumber = 10

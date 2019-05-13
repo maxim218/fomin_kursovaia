@@ -89,6 +89,18 @@ for i in range(1000, 1500 + 1):
 nl()
 nl()
 time.sleep(3)
+
+# insert departments to houses
+
+houseNumber = 5775
+
+for i in range(1, houseNumber + 1):
+	for k in range(1, 3 + 1):
+		sendGet('api/database/department/insert?department_house_id=' + str(i) + "&department_name=depart_" + str(k) + "_hous_" + str(i))
+
+nl()
+nl()
+time.sleep(3)
 		
 # exit
 

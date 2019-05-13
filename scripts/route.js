@@ -4,6 +4,7 @@ const init = require("./init");
 const insertCountry = require("./insertCountry");
 const insertCity = require("./insertCity");
 const insertHouse = require("./insertHouse");
+const insertDepartment = require("./insertDepartment");
 
 module.exports = function (app) {
     console.log("Route");
@@ -22,5 +23,9 @@ module.exports = function (app) {
 
     app.get("/api/database/house/insert", function (request, response) {
         insertHouse(request, response);
+    });
+
+    app.get("/api/database/department/insert", function (request, response) {
+        insertDepartment(request, response);
     });
 };

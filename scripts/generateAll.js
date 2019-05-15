@@ -4,9 +4,21 @@ const fs = require('fs');
 
 const generatePage = require("./generatePage");
 
+const pagesArr = [];
+
 function addPage(name, content) {	
     const way = "./scripts/static/" + name;
     fs.writeFileSync(way, content);
+    pagesArr.push({
+        name: name,
+        way: way,
+    });
+}
+
+function createLinksPage() {
+    pagesArr.forEach((obj) => {
+        
+    });
 }
 
 module.exports = function () {

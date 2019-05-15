@@ -1,18 +1,9 @@
-"use strict";
 
-module.exports = function (paramsObject) {
-    const header = paramsObject.header;
-    const urlString = paramsObject.urlString;
-    const filedsArr = paramsObject.filedsArr;
-    
-    const buffer = [];
-
-    buffer.push(`
         <!doctype html>
         <html>
         <head>
             <meta charset = "UTF-8" />
-            <title>${header}</title>
+            <title>House</title>
             <style>
                 body {
                     font-family: Geneva, Arial, Helvetica, sans-serif;
@@ -44,32 +35,23 @@ module.exports = function (paramsObject) {
             </style>
         </head>
         <body>    
-    `);
+    
 
-    buffer.push(`
-        <h1>${header}</h1>
+        <h1>House</h1>
         <br>
-    `)
+    
+ <form method = "GET" action = "/api/database/house/insert"> 
+ <b>house_name</b><br> 
+ <input class = "inp" type = "text" spellcheck = 'false' autocomplete = 'off' name = "house_name"> 
+<br><br>
+ <b>house_city_id</b><br> 
+ <input class = "inp" type = "text" spellcheck = 'false' autocomplete = 'off' name = "house_city_id"> 
+<br><br>
+ <br> 
+ <button type = "submit"> Отправить запрос </button> 
+ </form> 
+<br><br>
 
-    buffer.push(` <form method = "GET" action = "${urlString}"> `);
-
-    filedsArr.forEach((field) => {
-        buffer.push(` <b>${field}</b><br> `)
-        buffer.push(` <input class = "inp" type = "text" spellcheck = 'false' autocomplete = 'off' name = "${field}"> `);
-        buffer.push( `<br><br>`);
-    });
-
-    buffer.push(` <br> `);
-    buffer.push(` <button type = "submit"> Отправить запрос </button> `);
-    buffer.push(` </form> `);
-
-    buffer.push( `<br><br>`);
-
-    buffer.push(`
         </body>
         </html>
-    `);
-
-    const content = buffer.join("\n");
-    return content.toString();
-}
+    

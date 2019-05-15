@@ -3,12 +3,18 @@
 // импорт функции для роутинга
 const route = require("./route");
 
+// импорт функции для создания HTML страниц
+const generateAll = require("./generateAll");
+
 // запускаем сервер
 const express = require("express");
 const app = express();
 const port = 5000;
 app.listen(port);
 console.log("Server on port: " + port);
+
+// создаем страницы HTML
+generateAll();
 
 // расдача статических файлов
 app.use(express.static(__dirname + "/static"));

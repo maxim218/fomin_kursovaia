@@ -1,5 +1,8 @@
 "use strict";
 
+// библиотека для форматирования HTML кода
+const pretty = require('pretty');
+
 // функция для генерации кода HTML страницы
 module.exports = function (paramsObject) {
     // название страницы
@@ -86,7 +89,12 @@ module.exports = function (paramsObject) {
     `);
 
     // объединяем массив в строку
-    const content = buffer.join("\n");
+    let content = buffer.join("\n");
+
+    // форматируем HTML код
+    content = pretty(content, {
+        ocd: true,
+    });
 
     // возвращаем сформированную разметку
     return content.toString();

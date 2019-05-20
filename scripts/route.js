@@ -8,6 +8,7 @@ const insertDepartment = require("./insertDepartment");
 const insertPeople = require("./insertPeople");
 const insertTip = require("./insertTip");
 const insertPaper = require("./insertPaper");
+const insertMemberboy = require("./insertMemberboy");
 const selectAll = require("./selectAll");
 
 module.exports = function (app) {
@@ -43,6 +44,10 @@ module.exports = function (app) {
 
     app.get("/api/database/paper/insert", function(request, response) {
         insertPaper(request, response);
+    });
+
+    app.get("/api/database/memberboy/insert", function(request, response) {
+        insertMemberboy(request, response);
     });
 
     app.get("/api/database/select/all", function(request, response) {

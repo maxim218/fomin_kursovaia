@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "fs": "0.0.1-security",
-    "pg": ">=6.1.6"
+    "pg": ">=6.1.6",
+    "pretty": "^2.0.0"
   }
 }

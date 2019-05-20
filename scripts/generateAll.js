@@ -1,5 +1,8 @@
 "use strict";
 
+// библиотека для форматирования HTML кода
+const pretty = require('pretty');
+
 const fs = require('fs');
 
 const generatePage = require("./generatePage");
@@ -54,7 +57,12 @@ function createLinksPage() {
         </html>
     `);
 
-    const allHtml = buffer.join("");
+    let allHtml = buffer.join("\n");
+
+    allHtml = pretty(allHtml, {
+        ocd: true,
+    });
+
     fs.writeFileSync("./scripts/static/index.html", allHtml.toString());
 }
 
@@ -134,6 +142,17 @@ module.exports = function () {
     });
 
     addPage("paper.html", paper);
+
+    const memberboy = generatePage(({
+        header: "Memberboy",
+        urlString: "/api/database/memberboy/insert",
+        filedsArr: [
+            "memberboy_paper_id",
+            "memberboy_people_id",
+        ]
+    }));
+
+    addPage("memberboy.html", memberboy);
 
     createLinksPage();
 };

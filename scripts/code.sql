@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS memberboy;
 DROP TABLE IF EXISTS paper;
 DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS department;
@@ -45,5 +46,12 @@ CREATE TABLE paper (
     paper_people_id INTEGER REFERENCES people(people_id) ON DELETE CASCADE NOT NULL,
     paper_tip_id INTEGER REFERENCES tip(tip_id) ON DELETE CASCADE NOT NULL,
     paper_content TEXT
+);
+
+CREATE TABLE memberboy (
+    memberboy_id SERIAL PRIMARY KEY,
+    memberboy_paper_id INTEGER REFERENCES paper(paper_id) ON DELETE CASCADE NOT NULL,
+    memberboy_people_id INTEGER REFERENCES people(people_id) ON DELETE CASCADE NOT NULL,
+    memberboy_finish TEXT DEFAULT 'NO'
 );
 

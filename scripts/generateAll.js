@@ -45,9 +45,12 @@ function createLinksPage() {
     `);
 
     pagesArr.forEach((obj) => {
-        buffer.push(`
-            <br>
-            <a href = "${obj.name}">${obj.name.split(".")[0]}</a>
+        buffer.push(` 
+            <div style = "width: 500px; padding: 7px; background: white;">          
+               <a href = "${obj.name}">Добавление в таблицу ${obj.name.split(".")[0]}</a>
+               <br>
+               <a href = "/api/database/select/all?table=${obj.name.split(".")[0]}">Получение содержимого таблицы ${obj.name.split(".")[0]}</a>
+            </div>         
             <br>
         `);
     });

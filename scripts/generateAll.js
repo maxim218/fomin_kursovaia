@@ -16,9 +16,46 @@ function addPage(name, content) {
 }
 
 function createLinksPage() {
+    const buffer = [];
+
+    buffer.push(`
+        <!doctype html>
+        <html>
+            <head>
+                <meta charset = "UTF-8" />
+                <title>Ссылки</title>
+                <style>
+                    body {
+                        font-family: Geneva, Arial, Helvetica, sans-serif;
+                        background: #00FFFF;
+                        padding: 30px;
+                        font-size: 20px;
+                    }
+                    
+                    a {
+                        color: blue;
+                    }
+                </style>
+            </head>      
+            <body>
+                <h1>Ссылки</h1>
+    `);
+
     pagesArr.forEach((obj) => {
-        
+        buffer.push(`
+            <br>
+            <a href = "${obj.name}">${obj.name.split(".")[0]}</a>
+            <br>
+        `);
     });
+
+    buffer.push(`
+        </body>
+        </html>
+    `);
+
+    const allHtml = buffer.join("");
+    fs.writeFileSync("./scripts/static/index.html", allHtml.toString());
 }
 
 module.exports = function () {
@@ -85,4 +122,7 @@ module.exports = function () {
     });
 
     addPage("country.html", country);
-}
+
+
+    createLinksPage();
+};

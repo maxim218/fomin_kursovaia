@@ -7,6 +7,7 @@ const insertHouse = require("./insertHouse");
 const insertDepartment = require("./insertDepartment");
 const insertPeople = require("./insertPeople");
 const insertTip = require("./insertTip");
+const selectAll = require("./selectAll");
 
 module.exports = function (app) {
     console.log("Route");
@@ -37,5 +38,9 @@ module.exports = function (app) {
 
     app.get("/api/database/tip/insert", function(request, response) {
         insertTip(request, response);
+    });
+
+    app.get("/api/database/select/all", function(request, response) {
+        selectAll(request, response);
     });
 };

@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS paper;
 DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS department;
 DROP TABLE IF EXISTS house;
@@ -37,5 +38,12 @@ CREATE TABLE people (
 CREATE TABLE tip (
     tip_id SERIAL PRIMARY KEY,
     tip_name TEXT
+);
+
+CREATE TABLE paper (
+    paper_id SERIAL PRIMARY KEY,
+    paper_people_id INTEGER REFERENCES people(people_id) ON DELETE CASCADE NOT NULL,
+    paper_tip_id INTEGER REFERENCES tip(tip_id) ON DELETE CASCADE NOT NULL,
+    paper_content TEXT
 );
 

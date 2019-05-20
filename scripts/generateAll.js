@@ -123,6 +123,17 @@ module.exports = function () {
 
     addPage("country.html", country);
 
+    const paper = generatePage({
+        header: "Paper",
+        urlString: "/api/database/paper/insert",
+        filedsArr: [
+            "paper_people_id",
+            "paper_tip_id",
+            "paper_content",
+        ]
+    });
+
+    addPage("paper.html", paper);
 
     createLinksPage();
 };

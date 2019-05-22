@@ -44,6 +44,12 @@ function createLinksPage() {
                 <h1>Ссылки</h1>
     `);
 
+    buffer.push(`        
+        <a style = "color: red;" href = "/api/database/init">Очистить содержимое базы данных</a>
+        <br>
+        <br>
+    `);
+
     pagesArr.forEach((obj) => {
         buffer.push(` 
             <div style = "width: 500px; padding: 7px; background: white;">          

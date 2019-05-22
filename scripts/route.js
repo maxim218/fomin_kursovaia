@@ -13,6 +13,7 @@ const selectAll = require("./selectAll");
 const countriesCities = require("./countriesCities");
 const housesOfCity = require("./housesOfCity");
 const departmentsOfHousePag = require("./departmentsOfHousePag");
+const getCountPeopleInDepartment = require("./getCountPeopleInDepartment");
 
 module.exports = function (app) {
     console.log("Route");
@@ -67,5 +68,9 @@ module.exports = function (app) {
 
     app.get("/api/database/select/departmentsOfHousePag", function(request, response) {
         departmentsOfHousePag(request, response);
+    });
+
+    app.get("/api/database/select/getCountPeopleInDepartment", function(request, response) {
+        getCountPeopleInDepartment(request, response);
     });
 };

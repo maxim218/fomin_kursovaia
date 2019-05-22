@@ -10,6 +10,7 @@ const insertTip = require("./insertTip");
 const insertPaper = require("./insertPaper");
 const insertMemberboy = require("./insertMemberboy");
 const selectAll = require("./selectAll");
+const countriesCities = require("./countriesCities");
 
 module.exports = function (app) {
     console.log("Route");
@@ -52,5 +53,9 @@ module.exports = function (app) {
 
     app.get("/api/database/select/all", function(request, response) {
         selectAll(request, response);
+    });
+
+    app.get("/api/database/select/countriesCities", function(request, response) {
+        countriesCities(request, response);
     });
 };

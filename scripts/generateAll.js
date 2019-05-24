@@ -228,5 +228,13 @@ module.exports = function () {
 
     addPage("documentCreators.html", documentCreators, true);
 
+    const numberOfDocs = generatePage({
+        header: "NumberOfDocs",
+        urlString: "/api/database/select/numberOfDocs",
+        filedsArr: [],
+    });
+
+    addPage("numberOfDocs.html", numberOfDocs, true);
+
     createLinksPage();
 };

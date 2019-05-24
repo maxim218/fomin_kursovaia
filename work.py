@@ -135,7 +135,31 @@ for i in range(1, departmentsNumber + 1):
 nl()
 nl()
 time.sleep(3)
-		
+
+# add documents of people
+
+peopleNumber = 30000
+
+for i in range(1, peopleNumber + 1):
+	for k in range(1, 2 + (i % 3) + 1):
+		sendGet('api/database/paper/insert?paper_people_id=' + str(i) + "&paper_tip_id=4&paper_content=" + "content" + str(i) + "xxx" + str(k))
+
+nl()
+nl()
+time.sleep(3)
+
+# add participants to documents
+
+docsNumber = 30000
+
+for i in range(1, docsNumber + 1):
+	for k in range(1, 1 + (i % 2) + 1):
+		sendGet('api/database/memberboy/insert?memberboy_paper_id=' + str(i) + "&memberboy_people_id=" + str(i))
+
+nl()
+nl()
+time.sleep(3)
+
 # exit
 
 nl()

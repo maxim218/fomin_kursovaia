@@ -16,6 +16,7 @@ const departmentsOfHousePag = require("./departmentsOfHousePag");
 const getCountPeopleInDepartment = require("./getCountPeopleInDepartment");
 const documentCreators = require("./documentCreators");
 const numberOfDocs = require("./numberOfDocs");
+const partsOfDocument = require("./partsOfDocument");
 
 module.exports = function (app) {
     console.log("Route");
@@ -84,5 +85,9 @@ module.exports = function (app) {
 
     app.get("/api/database/select/numberOfDocs", function(request, response) { 
         numberOfDocs(request, response);
+    });
+
+    app.get("/api/database/select/partsOfDocument", function(request, response) {
+        partsOfDocument(request, response);
     });
 };

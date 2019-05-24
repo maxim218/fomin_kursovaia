@@ -236,5 +236,15 @@ module.exports = function () {
 
     addPage("numberOfDocs.html", numberOfDocs, true);
 
+    const partsOfDocument = generatePage({
+        header: "PartsOfDocument",
+        urlString: "/api/database/select/partsOfDocument",
+        filedsArr: [
+            "paper_id",
+        ]
+    });
+
+    addPage("partsOfDocument.html", partsOfDocument, true);
+
     createLinksPage();
 };

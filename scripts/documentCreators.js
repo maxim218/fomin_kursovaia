@@ -3,7 +3,7 @@
 // функция для отправки запросов в СУБД
 const query = require("./query");
 
-// функция для получения авторов документа
+// функция для получения авторов документов
 module.exports = function(request, response) {
     // формируем запрос в СУБД
     let queryString = " SELECT people_fio, paper_id, paper_content, tip_name "

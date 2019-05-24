@@ -14,6 +14,7 @@ const countriesCities = require("./countriesCities");
 const housesOfCity = require("./housesOfCity");
 const departmentsOfHousePag = require("./departmentsOfHousePag");
 const getCountPeopleInDepartment = require("./getCountPeopleInDepartment");
+const documentCreators = require("./documentCreators");
 
 module.exports = function (app) {
     console.log("Route");
@@ -74,5 +75,9 @@ module.exports = function (app) {
 
     app.get("/api/database/select/getCountPeopleInDepartment", function(request, response) {
         getCountPeopleInDepartment(request, response);
+    });
+
+    app.get("/api/database/select/documentCreators", function(request, response) { 
+        documentCreators(request, response);
     });
 };

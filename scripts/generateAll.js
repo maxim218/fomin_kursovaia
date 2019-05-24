@@ -220,5 +220,13 @@ module.exports = function () {
 
     addPage("getCountPeopleInDepartment.html", getCountPeopleInDepartment, true);
 
+    const documentCreators = generatePage({
+        header: "DocumentCreators",
+        urlString: "/api/database/select/documentCreators",
+        filedsArr: [],
+    });
+
+    addPage("documentCreators.html", documentCreators, true);
+
     createLinksPage();
 };

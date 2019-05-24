@@ -54,6 +54,8 @@ module.exports = function (app) {
         insertMemberboy(request, response);
     });
 
+    // выборка данных из базы
+
     app.get("/api/database/select/all", function(request, response) {
         selectAll(request, response);
     });

@@ -8,14 +8,22 @@ const fs = require('fs');
 const generatePage = require("./generatePage");
 
 const pagesArr = [];
+const pagesSelectArr = [];
 
-function addPage(name, content) {	
+function addPage(name, content, selectFlag) {	
     const way = "./scripts/static/" + name;
     fs.writeFileSync(way, content);
-    pagesArr.push({
-        name: name,
-        way: way,
-    });
+    if(!selectFlag) {
+        pagesArr.push({
+            name: name,
+            way: way,
+        });
+    } else {
+        pagesSelectArr.push({
+            name: name,
+            way: way,
+        });
+    }
 }
 
 function createLinksPage() {
@@ -56,6 +64,15 @@ function createLinksPage() {
                <a href = "${obj.name}">Добавление в таблицу ${obj.name.split(".")[0]}</a>
                <br>
                <a href = "/api/database/select/all?table=${obj.name.split(".")[0]}">Получение содержимого таблицы ${obj.name.split(".")[0]}</a>
+            </div>         
+            <br>
+        `);
+    });
+
+    pagesSelectArr.forEach((obj) => {
+        buffer.push(` 
+            <div style = "width: 500px; padding: 7px; background: yellow;">          
+               <a href = "${obj.name}">Открыть страницу ${obj.name.split(".")[0]}</a>
             </div>         
             <br>
         `);
@@ -162,6 +179,46 @@ module.exports = function () {
     }));
 
     addPage("memberboy.html", memberboy);
+
+    const countriesCities = generatePage({
+        header: "CountriesCities",
+        urlString: "/api/database/select/countriesCities",
+        filedsArr: [],
+    });
+
+    addPage("countriesCities.html", countriesCities, true);
+
+    const housesOfCity = generatePage({
+        header: "HousesOfCity",
+        urlString: "/api/database/select/housesOfCity",
+        filedsArr: [
+            "city_name",
+        ]
+    });
+
+    addPage("housesOfCity.html", housesOfCity, true);
+
+    const departmentsOfHousePag = generatePage({
+        header: "DepartmentsOfHousePag",
+        urlString: "/api/database/select/departmentsOfHousePag",
+        filedsArr: [
+            "house_name",
+            "limit",
+            "offset",
+        ],
+    });
+
+    addPage("departmentsOfHousePag.html", departmentsOfHousePag, true);
+
+    const getCountPeopleInDepartment = generatePage({
+        header: "GetCountPeopleInDepartment",
+        urlString: "/api/database/select/getCountPeopleInDepartment",
+        filedsArr: [
+            "department_name"
+        ]
+    });
+
+    addPage("getCountPeopleInDepartment.html", getCountPeopleInDepartment, true);
 
     createLinksPage();
 };

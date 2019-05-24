@@ -3,22 +3,33 @@
 // библиотека для форматирования HTML кода
 const pretty = require('pretty');
 
+// библиотека для работы с файлами
 const fs = require('fs');
 
+// подключение файла с функцией генерации страницы
 const generatePage = require("./generatePage");
 
+// массив страниц для добавления записей
 const pagesArr = [];
+
+// массив страниц для выборки записей
 const pagesSelectArr = [];
 
+// функция добавления страницы
 function addPage(name, content, selectFlag) {	
+    // путь к файлу
     const way = "./scripts/static/" + name;
+    // сохранения файла
     fs.writeFileSync(way, content);
+    // если это страница для добавления записей
     if(!selectFlag) {
+        // кладем в массив страниц для добавления записей
         pagesArr.push({
             name: name,
             way: way,
         });
     } else {
+        // кладем в массив страниц для выборки записей
         pagesSelectArr.push({
             name: name,
             way: way,
@@ -26,9 +37,12 @@ function addPage(name, content, selectFlag) {
     }
 }
 
+// функция для создания страницы со ссылками
 function createLinksPage() {
+    // массив для хранения HTML кода
     const buffer = [];
 
+    // кладем в массив начало страницы и стили
     buffer.push(`
         <!doctype html>
         <html>
@@ -52,13 +66,16 @@ function createLinksPage() {
                 <h1>Ссылки</h1>
     `);
 
+    // ссылка на команду очистки базы данных
     buffer.push(`        
         <a style = "color: red;" href = "/api/database/init">Очистить содержимое базы данных</a>
         <br>
         <br>
     `);
 
+    // перебираем страницы для добавления записей
     pagesArr.forEach((obj) => {
+        // добавляем ссылки на страницу для добавления записи и на страницу для получения содержимого таблицы
         buffer.push(` 
             <div style = "width: 500px; padding: 7px; background: white;">          
                <a href = "${obj.name}">Добавление в таблицу ${obj.name.split(".")[0]}</a>
@@ -69,7 +86,9 @@ function createLinksPage() {
         `);
     });
 
+    // перебираем страницы для выборки из базы данных
     pagesSelectArr.forEach((obj) => {
+        // добавляем ссылку на получение страницы для отправки запроса
         buffer.push(` 
             <div style = "width: 500px; padding: 7px; background: yellow;">          
                <a href = "${obj.name}">Открыть страницу ${obj.name.split(".")[0]}</a>
@@ -78,20 +97,25 @@ function createLinksPage() {
         `);
     });
 
+    // закрываем HTML код
     buffer.push(`
         </body>
         </html>
     `);
 
+    // объединяем содержимое массива в строку
     let allHtml = buffer.join("\n");
 
+    // делаем HTML код человекочитаемым
     allHtml = pretty(allHtml, {
         ocd: true,
     });
 
+    // сохраняем HTML код в файл
     fs.writeFileSync("./scripts/static/index.html", allHtml.toString());
 }
 
+// функция для генерации всех HTML страниц
 module.exports = function () {
     const tip = generatePage({
         header: "Tip",
@@ -246,5 +270,6 @@ module.exports = function () {
 
     addPage("partsOfDocument.html", partsOfDocument, true);
 
+    // генерируем страницу со ссылками
     createLinksPage();
 };

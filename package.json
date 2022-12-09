@@ -10,7 +10,7 @@
   "author": "Kolotovkin Maxim",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "fs": "0.0.1-security",
     "pg": ">=6.1.6",
     "pretty": "^2.0.0"
